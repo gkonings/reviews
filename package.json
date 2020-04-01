@@ -30,7 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "server": "node server/bin/www"
+    "server": "node src/server/bin/www"
   },
   "browserslist": {
     "production": [
