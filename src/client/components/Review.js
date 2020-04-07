@@ -13,32 +13,28 @@ const Review = ({
   texts,
   titles,
   ratings,
-}) => {
-  return (
-    <div>
-      <span>
-        added by <strong>{user}</strong> On {formatDate(entryDate)}
-      </span>
-      <h2>{titles[Object.keys(titles)[0]]}</h2>
-      <p>{texts[Object.keys(texts)[0]]}</p>
-      <h2>Ratings of aspects</h2>
-      {ratings && ratings.aspects && (
-        <ScoreOverview ratings={ratings.aspects} />
+}) => (
+  <div>
+    <span>
+      added by <strong>{user}</strong> On {formatDate(entryDate)}
+    </span>
+    <h2>{titles[Object.keys(titles)[0]]}</h2>
+    <p>{texts[Object.keys(texts)[0]]}</p>
+    <h2>Ratings of aspects</h2>
+    {ratings && ratings.aspects && <ScoreOverview ratings={ratings.aspects} />}
+    <aside>
+      {ratings && ratings.general && ratings.general.general && (
+        <Score title="general" value={ratings.general.general} />
       )}
-      <aside>
-        {ratings && ratings.general && ratings.general.general && (
-          <Score title="general" value={ratings.general.general} />
-        )}
 
-        <div>
-          About the trip date: {formatDate(travelDate)}
-          with: {traveledWith}
-        </div>
-      </aside>
-      <hr />
-    </div>
-  );
-};
+      <div>
+        About the trip date: {formatDate(travelDate)}
+        with: {traveledWith}
+      </div>
+    </aside>
+    <hr />
+  </div>
+);
 
 Review.propTypes = {
   user: pt.string.isRequired,

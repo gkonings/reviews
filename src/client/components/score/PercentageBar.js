@@ -3,15 +3,13 @@ import pt from 'prop-types';
 
 import styles from './PercentageBar.module.scss';
 
-const PercentageBar = ({ percentage }) => {
-  return (
-    <div
-      className={styles.percentageBar}
-      style={{ '--percent': `${percentage}%` }}
-      aria-label={`A percentage of ${percentage}`}
-    />
-  );
-};
+const PercentageBar = ({ percentage }) => (
+  <div
+    className={styles.percentageBar}
+    style={{ '--percent': `${percentage}%` }}
+    aria-label={`A percentage of ${percentage}`}
+  />
+);
 
 PercentageBar.propTypes = {
   percentage: pt.number,

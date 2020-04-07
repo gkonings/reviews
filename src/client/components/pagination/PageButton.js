@@ -4,22 +4,21 @@ import cx from 'clsx';
 
 import styles from './PageButton.module.scss';
 
-const PageButton = ({ children, firstButton, lastButton, active, ...rest }) => {
-  return (
-    <button
-      type="button"
-      className={cx(
-        styles.button,
-        firstButton && styles.firstButton,
-        lastButton && styles.lastButton,
-        active && styles.active
-      )}
-      {...rest}
-    >
-      {children}
-    </button>
-  );
-};
+const PageButton = ({ children, firstButton, lastButton, active, ...rest }) => (
+  <button
+    type="button"
+    name={children}
+    className={cx(
+      styles.button,
+      firstButton && styles.firstButton,
+      lastButton && styles.lastButton,
+      active && styles.active
+    )}
+    {...rest}
+  >
+    {children}
+  </button>
+);
 
 PageButton.propTypes = {
   children: pt.oneOfType([pt.number, pt.string]).isRequired,

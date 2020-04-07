@@ -25,6 +25,7 @@ const Reviews = () => {
           filterBy,
           sortBy,
         });
+
         setReviews(result.reviews);
         setPagination(result.pagination);
       } catch {
