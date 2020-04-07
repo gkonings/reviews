@@ -10,11 +10,12 @@ const fetchResource = async (url) => {
   return json;
 };
 
-export const fetchReviews = ({ page = 1, filterBy, sortBy }) => {
+export const fetchReviews = (page = 1, { filterBy, sortBy }) => {
   const limit = 5;
   const pageIndex = page - 1;
   const start = pageIndex * limit;
-  const filterString = filterBy ? `&filterBy=${filterBy}` : '';
+  const filterString =
+    filterBy && filterBy !== 'ALL' ? `&filterBy=${filterBy}` : '';
   const sortString = sortBy ? `&sortBy=${sortBy}` : '';
 
   return fetchResource(

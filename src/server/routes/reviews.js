@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
   );
   const pagination = {
     numPages: Math.ceil(filtered.length / limit) || filtered.length,
-    curPage: Math.ceil((start - 1) / limit) + 1 || 1,
     start: parseInt(start, 10),
     limit: parseInt(limit, 10),
     length: filtered.length,

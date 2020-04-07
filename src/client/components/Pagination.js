@@ -72,41 +72,33 @@ PageButton.defaultProps = {
   active: false,
 };
 
-const Pagination = ({
-  curPage,
-  numPages,
-  start,
-  limit,
-  length,
-  onPageClick,
-}) => {
-  const pages = getPages(numPages, curPage);
-  const startIndex = (curPage - 1) * 5 + 1;
+const Pagination = ({ page, numPages, start, limit, length, onPageClick }) => {
+  const pages = getPages(numPages, page);
 
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
         <li>
           <PageButton
-            disabled={curPage === 1}
-            onClick={() => onPageClick(curPage - 1)}
+            disabled={page === 1}
+            onClick={() => onPageClick(page - 1)}
             firstButton
           >
             {'<<'}
           </PageButton>
         </li>
 
-        {pages.map((page) => (
+        {pages.map((p) => (
           <li>
-            {page === 0 ? (
+            {p === 0 ? (
               <PageButton disabled>...</PageButton>
             ) : (
               <PageButton
-                disabled={curPage === page}
-                active={curPage === page}
-                onClick={() => onPageClick(page)}
+                disabled={page === p}
+                active={page === p}
+                onClick={() => onPageClick(p)}
               >
-                {page}
+                {p}
               </PageButton>
             )}
           </li>
@@ -114,8 +106,8 @@ const Pagination = ({
 
         <li>
           <PageButton
-            disabled={curPage === numPages}
-            onClick={() => onPageClick(curPage + 1)}
+            disabled={page === numPages}
+            onClick={() => onPageClick(page + 1)}
             lastButton
           >
             {'>>'}
@@ -130,7 +122,7 @@ const Pagination = ({
 };
 
 Pagination.propTypes = {
-  curPage: pt.number.isRequired,
+  page: pt.number.isRequired,
   numPages: pt.number.isRequired,
   onPageClick: pt.func,
   start: pt.number.isRequired,
