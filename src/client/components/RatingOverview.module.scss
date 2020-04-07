@@ -1,0 +1,29 @@
+.ratingList {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
+.rating {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  width: 100%;
+
+  @media screen and (min-width: 768px) and (max-width: 1023px) {
+    width: calc((100% - 48px) * 1 / 2);
+    margin-right: 24px;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc((100% - 48px) * 1 / 3);
+    margin-right: 24px;
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}

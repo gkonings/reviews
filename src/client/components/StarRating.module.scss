@@ -1,0 +1,34 @@
+:root {
+  --color-widget-star: #ffa502;
+  --color-invert: #fff;
+}
+
+.rating {
+  --size: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: var(--size);
+  width: var(--size);
+
+  &::before {
+    content: '★';
+    color: var(--color-widget-star);
+    z-index: -1;
+    font-size: var(--size);
+    width: var(--size);
+    height: var(--size);
+    text-align: center;
+    line-height: var(--size);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .content {
+    display: flex;
+    margin-top: 6px;
+    color: var(--color-invert);
+  }
+}

@@ -1,0 +1,13 @@
+.percentageBar {
+  display: inline-block;
+  font-family: Times;
+  line-height: 1;
+  min-height: 20px;
+  width: 100%;
+  background: red;
+  background: linear-gradient(
+    90deg,
+    var(--color-widget-foreground) var(--percent),
+    var(--color-widget-background) var(--percent)
+  );
+}

@@ -1,23 +1,37 @@
-var express = require('express');
-var _ = require('underscore');
-var router = express.Router();
+const express = require('express');
+const _ = require('underscore');
 
-var reviews = require('../api/reviews.json');
-var util = require('../_util');
+const router = express.Router();
 
-router.get('/', function(req, res) {
-  let { start = 1, limit, filterBy, sortBy = 'entryDate' } = req.query;
-  let data = _.sortBy(reviews, sortBy).reverse(); // reverse to sort desc
-  let filtered = data.filter(review =>
+const reviews = require('../api/reviews.json');
+const util = require('../_util');
+
+router.get('/', (req, res) => {
+  const { start = 0, limit = 5, filterBy, sortBy = 'entryDate' } = req.query;
+  const data = _.sortBy(reviews, sortBy).reverse(); // reverse to sort desc
+  const filtered = data.filter((review) =>
     filterBy ? review.traveledWith === filterBy : true
   );
-  let paginated = filtered.slice(start - 1, limit);
-  res.json({ all: data, filtered: filtered, limited: paginated });
+  const paginated = filtered.slice(
+    parseInt(start, 10),
+    parseInt(start, 10) + parseInt(limit, 10)
+  );
+  const pagination = {
+    numPages: Math.ceil(data.length / limit) || data.length,
+    curPage: Math.ceil((start - 1) / limit) + 1 || 1,
+    start: parseInt(start, 10),
+    limit: parseInt(limit, 10),
+    length: data.length,
+  };
+  res.json({
+    reviews: paginated,
+    pagination,
+  });
 });
 
-router.get('/average', function(req, res) {
-  let { generalAvg, aspecsAvg } = util.getAverageRatings(reviews);
-  let traveledWithAvg = util.getAverageTravelledWith(reviews);
+router.get('/average', (req, res) => {
+  const { generalAvg, aspecsAvg } = util.getAverageRatings(reviews);
+  const traveledWithAvg = util.getAverageTravelledWith(reviews);
   res.json({ generalAvg, aspecsAvg, traveledWithAvg });
 });
 
