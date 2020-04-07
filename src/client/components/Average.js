@@ -1,12 +1,37 @@
-import React from 'react';
-import pt from 'prop-types';
+import React, { useState, useEffect } from 'react';
 
+import { fetchAverage } from '../services/reviewService';
 import RatingOverview from './RatingOverview';
-
 import StarRating from './StarRating';
 import styles from './Average.module.scss';
 
-const Average = ({ generalAvg, aspecsAvg, traveledWithAvg }) => {
+const Average = () => {
+  const [average, setAverage] = useState();
+  const [error, setError] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetchAverage();
+        setAverage(result);
+      } catch {
+        setError(
+          `This page is currently not available (have you tried running 'npm run server'?)`
+        );
+      }
+    };
+    fetchData();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (error) {
+    return <section>{error}</section>;
+  }
+
+  if (!average) {
+    return null;
+  }
+
+  const { generalAvg, aspecsAvg, traveledWithAvg } = average;
   return (
     <section>
       <div className={styles.heading}>
@@ -42,18 +67,6 @@ const Average = ({ generalAvg, aspecsAvg, traveledWithAvg }) => {
       )}
     </section>
   );
-};
-
-Average.propTypes = {
-  generalAvg: pt.string,
-  aspecsAvg: pt.shape({}),
-  traveledWithAvg: pt.shape({}),
-};
-
-Average.defaultProps = {
-  generalAvg: null,
-  aspecsAvg: null,
-  traveledWithAvg: null,
 };
 
 export default Average;

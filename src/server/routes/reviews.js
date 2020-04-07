@@ -17,11 +17,11 @@ router.get('/', (req, res) => {
     parseInt(start, 10) + parseInt(limit, 10)
   );
   const pagination = {
-    numPages: Math.ceil(data.length / limit) || data.length,
+    numPages: Math.ceil(filtered.length / limit) || filtered.length,
     curPage: Math.ceil((start - 1) / limit) + 1 || 1,
     start: parseInt(start, 10),
     limit: parseInt(limit, 10),
-    length: data.length,
+    length: filtered.length,
   };
   res.json({
     reviews: paginated,

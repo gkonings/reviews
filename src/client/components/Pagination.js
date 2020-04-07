@@ -123,7 +123,7 @@ const Pagination = ({
         </li>
       </ul>
       <em className={styles.description}>
-        Show {start}-{start + limit} out of {length} reviews
+        Show {start + 1}-{start + limit} out of {length} reviews
       </em>
     </nav>
   );

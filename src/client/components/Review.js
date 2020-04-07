@@ -8,7 +8,15 @@ const formatDate = (dateString) => {
   return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
 };
 
-const Review = ({ user, entryDate, texts, titles, ratings }) => {
+const Review = ({
+  user,
+  entryDate,
+  travelDate,
+  traveledWith,
+  texts,
+  titles,
+  ratings,
+}) => {
   return (
     <div>
       <span>
@@ -20,6 +28,13 @@ const Review = ({ user, entryDate, texts, titles, ratings }) => {
       {ratings && ratings.aspects && (
         <RatingOverview ratings={ratings.aspects} />
       )}
+      <aside>
+        <div>
+          About the trip date: {formatDate(travelDate)}
+          with: {traveledWith}
+        </div>
+      </aside>
+      <hr />
     </div>
   );
 };
@@ -27,6 +42,8 @@ const Review = ({ user, entryDate, texts, titles, ratings }) => {
 Review.propTypes = {
   user: pt.string.isRequired,
   entryDate: pt.number.isRequired,
+  travelDate: pt.number.isRequired,
+  traveledWith: pt.string.isRequired,
   texts: pt.shape({}).isRequired,
   titles: pt.shape({}).isRequired,
   ratings: pt.shape({
