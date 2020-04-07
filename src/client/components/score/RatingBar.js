@@ -1,9 +1,9 @@
 import React from 'react';
 import pt from 'prop-types';
 
-import styles from './Rating.module.scss';
+import styles from './RatingBar.module.scss';
 
-const Rating = ({ rating }) => {
+const RatingBar = ({ rating }) => {
   return (
     <div
       className={styles.rating}
@@ -13,8 +13,8 @@ const Rating = ({ rating }) => {
   );
 };
 
-Rating.propTypes = {
-  rating: pt.string.isRequired,
+RatingBar.propTypes = {
+  rating: pt.oneOfType([pt.number, pt.string]).isRequired,
 };
 
-export default Rating;
+export default RatingBar;

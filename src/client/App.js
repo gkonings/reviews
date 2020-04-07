@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Average from './components/Average';
-import Reviews from './components/Reviews';
+import Average from './sections/Average';
+import Reviews from './sections/Reviews';
 
 const App = () => {
   return (

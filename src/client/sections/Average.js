@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import { fetchAverage } from '../services/reviewService';
-import RatingOverview from './RatingOverview';
-import StarRating from './StarRating';
+import RatingOverview from '../components/score/ScoreOverview';
+import StarRating from '../components/StarRating';
 import styles from './Average.module.scss';
 
 const Average = () => {

@@ -1,0 +1,32 @@
+.container {
+  border: 0 solid #eee;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background: #f6f6f6;
+}
+
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.sort {
+  display: flex;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}

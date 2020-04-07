@@ -1,16 +1,3 @@
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.list {
-  list-style: none;
-  padding-left: 0;
-  display: flex;
-  flex-direction: row;
-}
-
 .button {
   font-size: 1em;
   padding: 4px 6px;
@@ -34,8 +21,4 @@
 
 .active {
   color: var(--color-widget-foreground);
-}
-
-.description {
-  display: flex;
 }
